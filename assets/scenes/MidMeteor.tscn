@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/sprites/corpo-ast-g2.png" type="Texture" id=1]
-[ext_resource path="res://assets/scenes/Meteor.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/corpo-ast-m1.png" type="Texture" id=1]
+[ext_resource path="res://assets/scripts/MidMeteor.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 31.4006
+radius = 15.052
 
-[node name="Meteor" type="Area2D" groups=["damageable"]]
+[node name="MidMeteor" type="Area2D" groups=["damageable"]]
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 2 )
 
@@ -17,8 +17,8 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 0.624999, 0 )
-scale = Vector2( 3.5625, 3.5 )
+position = Vector2( 0.625001, -0.625002 )
+scale = Vector2( 1.9375, 1.8125 )
 
 [connection signal="area_entered" from="." to="." method="_on_Meteor_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Meteor_area_exited"]

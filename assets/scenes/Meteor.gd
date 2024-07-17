@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Meteor
+
 export var minSpeed: float = 10
 export var maxSpeed: float = 20
 export var minRotationRate: float = -20
