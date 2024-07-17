@@ -6,7 +6,7 @@ onready var firingPositions := $FiringPositions
 onready var fireDelayTimer := $Timer
 
 export var speed: float = 100
-export var fireDelay: float = 0.5
+export var fireDelay: float = 0.3
 var vel := Vector2(0, 0)
 
 func _process(delta):
