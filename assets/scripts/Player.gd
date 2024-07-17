@@ -25,13 +25,13 @@ func _process(delta):
 func _physics_process(delta):
 	var dirVec := Vector2(0, 0)
 	
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left") or Input.is_key_pressed(KEY_A):
 		dirVec.x = -1
-	elif Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("move_right") or Input.is_key_pressed(KEY_D):
 		dirVec.x = 1
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_up") or Input.is_key_pressed(KEY_W):
 		dirVec.y = -1
-	elif Input.is_action_pressed("move_down"):
+	elif Input.is_action_pressed("move_down") or Input.is_key_pressed(KEY_S):
 		dirVec.y = 1
 
 	vel = dirVec.normalized() * speed
