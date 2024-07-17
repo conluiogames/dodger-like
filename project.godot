@@ -11,7 +11,16 @@ config_version=4
 [application]
 
 config/name="Dodge-like"
+run/main_scene="res://MainScenes/Gameplay.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=200
+window/size/height=300
+window/size/test_width=400
+window/size/test_height=600
+window/stretch/mode="viewport"
 
 [gui]
 
