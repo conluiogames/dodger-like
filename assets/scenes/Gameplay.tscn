@@ -1,31 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/backgroundColor.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/Purple_Nebula_03-512x512.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/starSmall.png" type="Texture" id=3]
+[ext_resource path="res://assets/scenes/Meteor.tscn" type="PackedScene" id=4]
 
 [node name="Gameplay" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 100, 149.5 )
-scale = Vector2( 1.33333, 2.00667 )
+position = Vector2( 100, 149 )
+scale = Vector2( 0.390625, 0.589844 )
 texture = ExtResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
-position = Vector2( -2.24999, -73.0066 )
-amount = 50
-lifetime = 4.0
+position = Vector2( 14.1507, -216.747 )
+amount = 35
+lifetime = 12.35
 texture = ExtResource( 3 )
 emission_shape = 2
-emission_rect_extents = Vector2( 80, 1 )
+emission_rect_extents = Vector2( 200, 1 )
 direction = Vector2( 0, 1 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 70.0
+initial_velocity = 253.59
 initial_velocity_random = 0.6
-scale_amount = 0.01
-scale_amount_random = 0.25
+scale_amount = 0.5
+scale_amount_random = 1.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 103, 231 )
 scale = Vector2( 0.75, 0.75 )
+
+[node name="Area2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 56, 39 )
