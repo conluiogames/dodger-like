@@ -3,9 +3,9 @@ extends Node2D
 const MIN_SPAWN_TIME = 1.5
 
 var preloadedMeteor := [
-	preload("res://assets/scenes/SmallMeteor.tscn"),
-	preload("res://assets/scenes/MidMeteor.tscn"),
-	preload("res://assets/scenes/BigMeteor.tscn")
+	preload("res://prefabs/SmallMeteor.tscn"),
+	preload("res://prefabs/MidMeteor.tscn"),
+	preload("res://prefabs/BigMeteor.tscn")
 ]
 
 onready var spawnTimer := $SpawnTimer

@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Player
 
-var plBullet := preload("res://assets/scenes/Bullet.tscn")
+var plBullet := preload("res://prefabs/Bullet.tscn")
 
 onready var firingPositions := $FiringPositions
 onready var fireDelayTimer := $Timer

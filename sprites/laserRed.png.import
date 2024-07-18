@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/corpo-ast-p2.png-fdf2377f7079e0ba66d7774ccb43e1e9.stex"
+path="res://.import/laserRed.png-cba2f2e50bfcc96c975b5f8e526c551c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/corpo-ast-p2.png"
-dest_files=[ "res://.import/corpo-ast-p2.png-fdf2377f7079e0ba66d7774ccb43e1e9.stex" ]
+source_file="res://sprites/laserRed.png"
+dest_files=[ "res://.import/laserRed.png-cba2f2e50bfcc96c975b5f8e526c551c.stex" ]
 
 [params]
 

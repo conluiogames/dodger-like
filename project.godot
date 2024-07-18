@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Meteor",
 "language": "GDScript",
-"path": "res://assets/scenes/Meteor.gd"
+"path": "res://scripts/Meteor.gd"
 }, {
 "base": "Area2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://assets/scripts/Player.gd"
+"path": "res://scripts/Player.gd"
 } ]
 _global_script_class_icons={
 "Meteor": "",
@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Dodge-like"
-run/main_scene="res://assets/scenes/Gameplay.tscn"
+run/main_scene="res://Gameplay.tscn"
 config/icon="res://icon.png"
 
 [display]

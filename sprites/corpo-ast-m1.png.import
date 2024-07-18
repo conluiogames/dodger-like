@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/starSmall.png-1fd3d8404316b21d06730534549c1a79.stex"
+path="res://.import/corpo-ast-m1.png-2202cf2724422427312fe542ec7f6df6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/starSmall.png"
-dest_files=[ "res://.import/starSmall.png-1fd3d8404316b21d06730534549c1a79.stex" ]
+source_file="res://sprites/corpo-ast-m1.png"
+dest_files=[ "res://.import/corpo-ast-m1.png-2202cf2724422427312fe542ec7f6df6.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

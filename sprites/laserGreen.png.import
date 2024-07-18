@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backgroundColor.png-badb2002ef67baef689170e2416a49c7.stex"
+path="res://.import/laserGreen.png-54c875743e2b3998a3e5a36836a58a35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/backgroundColor.png"
-dest_files=[ "res://.import/backgroundColor.png-badb2002ef67baef689170e2416a49c7.stex" ]
+source_file="res://sprites/laserGreen.png"
+dest_files=[ "res://.import/laserGreen.png-54c875743e2b3998a3e5a36836a58a35.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

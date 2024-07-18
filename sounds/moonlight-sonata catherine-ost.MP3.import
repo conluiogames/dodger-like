@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/moonlight-sonata catherine-ost.MP3-bc0a04d8275b122390426f8d29c5aa63.mp3str"
+
+[deps]
+
+source_file="res://sounds/moonlight-sonata catherine-ost.MP3"
+dest_files=[ "res://.import/moonlight-sonata catherine-ost.MP3-bc0a04d8275b122390426f8d29c5aa63.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
