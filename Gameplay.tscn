@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/Purple_Nebula_03-512x512.png" type="Texture" id=2]
@@ -6,12 +6,14 @@
 [ext_resource path="res://prefabs/MeteorBig.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/Spawner.gd" type="Script" id=5]
 [ext_resource path="res://fonts/dogica.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scripts/Gameplay.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 outline_color = Color( 1, 1, 1, 0.564706 )
 font_data = ExtResource( 6 )
 
 [node name="Gameplay" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 100, 149 )

@@ -7,8 +7,20 @@ var score : int = 00000
 var scoreRecord : int = 00000
 
 func _ready():
+	set_state(GameState.TITLE)
 	pass 
 
+func set_state(new_state):
+	state = new_state
+	match state:
+		GameState.TITLE:
+			enter_title_state()
+		GameState.INGAME:
+			enter_ingame_state()
+		GameState.PAUSE:
+			enter_pause_state()
+		GameState.GAMEOVER:
+			enter_gameover_state()
 
 func _compareScores():
 	if score > scoreRecord:	
@@ -17,18 +29,34 @@ func _compareScores():
 
 func enter_title_state():
 	print("Entered Title State")
+	$GUI/title.visible(true)
+	$GUI/ingame.hide()
+	$GUI/pause.hide()
+	$GUI/gameover.hide()
 	pass 
 
 func enter_ingame_state():
 	print("Entered In-Game State")
+	$Gameplay/GUI/title.hide() 
+	$Gameplay/GUI/ingame.visible()
+	$Gameplay/GUI/pause.hide() 
+	$Gameplay/GUI/gameover.hide() 
 	pass 
 
 func enter_pause_state():
 	print("Entered Pause State")
+	$Gameplay/GUI/title.hide() 
+	$Gameplay/GUI/ingame.visible()
+	$Gameplay/GUI/pause.visible()
+	$Gameplay/GUI/gameover.hide() 
 	pass 
 
 func enter_gameover_state():
 	print("Entered Game Over State")
+	$Gameplay/GUI/title.hide() 
+	$Gameplay/GUI/ingame.hide() 
+	$Gameplay/GUI/pause.hide() 
+	$Gameplay/GUI/gameover.visible()
 	pass 
 
 func _process(delta):
@@ -71,4 +99,3 @@ func _input(event):
 				set_state(GameState.INGAME)
 			GameState.GAMEOVER:
 				set_state(GameState.TITLE)
-
