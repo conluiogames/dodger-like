@@ -8,6 +8,7 @@
 [ext_resource path="res://fonts/dogica.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+outline_color = Color( 1, 1, 1, 0.564706 )
 font_data = ExtResource( 6 )
 
 [node name="Gameplay" type="Node2D"]
@@ -49,7 +50,11 @@ script = ExtResource( 5 )
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="score" type="Label" parent="GUI"]
+[node name="ingame" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="score" type="Label" parent="GUI/ingame"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 29.0
@@ -59,5 +64,198 @@ custom_fonts/font = SubResource( 1 )
 text = "00000"
 align = 1
 valign = 1
+
+[node name="title" type="Control" parent="GUI"]
+visible = false
+margin_right = 199.0
+margin_bottom = 299.0
+
+[node name="Logo" type="Control" parent="GUI/title"]
+margin_left = 23.0
+margin_top = 117.0
+margin_right = 63.0
+margin_bottom = 157.0
+
+[node name="logo-shadow" type="Label" parent="GUI/title/Logo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_top = 2.0
+margin_right = 142.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "DodgerLike"
+align = 1
+valign = 1
+
+[node name="logo-text" type="Label" parent="GUI/title/Logo"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 140.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.890196, 0.980392, 0.0117647, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "DodgerLike"
+align = 1
+valign = 1
+
+[node name="tInstruction" type="Button" parent="GUI/title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -66.5
+margin_top = 143.0
+margin_right = 157.5
+margin_bottom = 157.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Press to Start"
+
+[node name="pause" type="Control" parent="GUI"]
+visible = false
+margin_right = 199.0
+margin_bottom = 301.0
+
+[node name="Title" type="Control" parent="GUI/pause"]
+margin_left = 23.0
+margin_top = 117.0
+margin_right = 63.0
+margin_bottom = 157.0
+
+[node name="pTitle_shadow" type="Label" parent="GUI/pause/Title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_top = 2.0
+margin_right = 142.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Pause"
+align = 1
+valign = 1
+
+[node name="pTitle" type="Label" parent="GUI/pause/Title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 140.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.890196, 0.980392, 0.0117647, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Pause"
+align = 1
+valign = 1
+
+[node name="pOption1" type="Button" parent="GUI/pause"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -52.5
+margin_top = 151.0
+margin_right = 123.5
+margin_bottom = 165.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Continar"
+
+[node name="pOption2" type="Button" parent="GUI/pause"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -52.5
+margin_top = 167.0
+margin_right = 123.5
+margin_bottom = 181.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Recomeçar"
+
+[node name="pOption3" type="Button" parent="GUI/pause"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -52.5
+margin_top = 182.0
+margin_right = 123.5
+margin_bottom = 196.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Sair"
+
+[node name="gameover" type="Control" parent="GUI"]
+visible = false
+anchor_right = 4.975
+anchor_bottom = 7.45
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="gTitle" type="Control" parent="GUI/gameover"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="gTitle_shadow2" type="Label" parent="GUI/gameover/gTitle"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 5.0
+margin_top = 119.0
+margin_right = 165.0
+margin_bottom = 133.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+valign = 1
+
+[node name="gTitle2" type="Label" parent="GUI/gameover/gTitle"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 3.0
+margin_top = 117.0
+margin_right = 163.0
+margin_bottom = 131.0
+custom_colors/font_color = Color( 0.890196, 0.980392, 0.0117647, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+valign = 1
+
+[node name="record" type="Label" parent="GUI/gameover"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -62.5
+margin_top = 143.0
+margin_right = 161.5
+margin_bottom = 170.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Placar: 00000
+Record:  00000"
+align = 1
+valign = 1
+
+[node name="gOption1" type="Button" parent="GUI/gameover"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -47.5
+margin_top = 171.0
+margin_right = 128.5
+margin_bottom = 185.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Recomeçar"
+
+[node name="gOption2" type="Button" parent="GUI/gameover"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -47.5
+margin_top = 186.0
+margin_right = 128.5
+margin_bottom = 200.0
+rect_scale = Vector2( 0.6, 0.72 )
+custom_fonts/font = SubResource( 1 )
+text = "Sair"
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
