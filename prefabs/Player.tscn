@@ -10,8 +10,14 @@ radius = 34.5431
 script = ExtResource( 2 )
 speed = 200.0
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -8 )
+scale = Vector2( 0.239998, 0.319999 )
+shape = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.76221 )
+position = Vector2( 1, 8 )
+scale = Vector2( 0.719997, 0.399999 )
 shape = SubResource( 1 )
 
 [node name="FiringPositions" type="Node2D" parent="."]
