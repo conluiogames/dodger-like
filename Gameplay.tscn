@@ -88,7 +88,7 @@ text = "DodgerLike"
 align = 1
 valign = 1
 
-[node name="tInstruction" type="Button" parent="GUI/title"]
+[node name="bt_start" type="Button" parent="GUI/title"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -66.5
@@ -100,6 +100,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Press to Start"
 
 [node name="ingame" type="Control" parent="GUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -115,6 +116,7 @@ align = 1
 valign = 1
 
 [node name="pause" type="Control" parent="GUI"]
+visible = false
 margin_right = 199.0
 margin_bottom = 301.0
 
@@ -150,7 +152,7 @@ text = "Pause"
 align = 1
 valign = 1
 
-[node name="pOption1" type="Button" parent="GUI/pause"]
+[node name="bt_resume" type="Button" parent="GUI/pause"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -52.5
@@ -162,6 +164,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Continar"
 
 [node name="gameover" type="Control" parent="GUI"]
+visible = false
 anchor_right = 4.975
 anchor_bottom = 7.45
 __meta__ = {
@@ -240,3 +243,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Sair"
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
+[connection signal="pressed" from="GUI/title/bt_start" to="." method="_on_bt_start_pressed"]
+[connection signal="pressed" from="GUI/pause/bt_resume" to="." method="_on_bt_resume_pressed"]
+[connection signal="pressed" from="GUI/commonButtons/bt_restart" to="." method="_on_bt_restart_pressed"]
+[connection signal="pressed" from="GUI/commonButtons/bt_quit" to="." method="_on_bt_quit_pressed"]

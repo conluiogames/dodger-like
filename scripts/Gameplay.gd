@@ -9,11 +9,12 @@ var scoreRecord : int = 00000
 
 func _ready():
 	set_state(GameState.TITLE)
+	print("Máquina atual: " + str(state))
 	pass 
 
 func set_state(new_state):
-	state = new_state
-	match state:
+	print("Estado tentará mudar para " + str(new_state))
+	match new_state:
 		GameState.TITLE:
 			enter_title_state()
 		GameState.INGAME:
@@ -22,11 +23,9 @@ func set_state(new_state):
 			enter_pause_state()
 		GameState.GAMEOVER:
 			enter_gameover_state()
+	print("Máquina atual: " + str(state))
+	pass
 
-func _compareScores():
-	if score > scoreRecord:	
-		scoreRecord = score
-	pass 
 
 func enter_title_state():
 	print("Entered Title State")
@@ -65,43 +64,37 @@ func enter_gameover_state():
 	$GUI/commonButtons.visible = true
 	pass 
 
-func _process(delta):
-	match state:
-		GameState.TITLE:
-			update_title_state(delta)
-		GameState.INGAME:
-			update_ingame_state(delta)
-		GameState.PAUSE:
-			update_pause_state(delta)
-		GameState.GAMEOVER:
-			update_gameover_state(delta)
+func _compareScores():
+	if score > scoreRecord:	
+		scoreRecord = score
+	pass 
+
+func restart_game():
+	pass
+	
+func quit_game():
+	get_tree().quit()
 	pass
 
 
-func update_title_state(delta):
-	# Handle title screen updates
+func _on_bt_start_pressed():
+	set_state("INGAME")
+	pass 
+	
+func _on_bt_resume_pressed():
+	restart_game()
 	pass
 
-func update_ingame_state(delta):
-	# Handle in-game updates
+func _on_bt_restart_pressed():
+	restart_game()
 	pass
 
-func update_pause_state(delta):
-	# Handle pause menu updates
+func _on_bt_quit_pressed():
+	quit_game()
 	pass
 
-func update_gameover_state(delta):
-	# Handle game over screen updates
-	pass
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		match state:
-			GameState.TITLE:
-				set_state(GameState.INGAME)
-			GameState.INGAME:
-				set_state(GameState.PAUSE)
-			GameState.PAUSE:
-				set_state(GameState.INGAME)
-			GameState.GAMEOVER:
-				set_state(GameState.TITLE)
+
+
+
+

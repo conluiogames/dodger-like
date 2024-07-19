@@ -28,6 +28,7 @@ _global_script_class_icons={
 
 config/name="Dodge-like"
 run/main_scene="res://Gameplay.tscn"
+boot_splash/show_image=false
 config/icon="res://icon.png"
 
 [display]
