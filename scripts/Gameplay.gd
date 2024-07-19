@@ -1,5 +1,6 @@
 extends Node2D
 
+var titleObj
 enum GameState { TITLE, INGAME, PAUSE, GAMEOVER }
 var state = GameState.TITLE
 
@@ -29,34 +30,39 @@ func _compareScores():
 
 func enter_title_state():
 	print("Entered Title State")
-	$GUI/title.visible(true)
-	$GUI/ingame.hide()
-	$GUI/pause.hide()
-	$GUI/gameover.hide()
-	pass 
+	$GUI.visible = true
+	$GUI/title.visible = true
+	$GUI/ingame.visible = false
+	$GUI/pause.visible = false
+	$GUI/gameover.visible = false
+	$GUI/commonButtons.visible = false
+	pass
 
 func enter_ingame_state():
 	print("Entered In-Game State")
-	$Gameplay/GUI/title.hide() 
-	$Gameplay/GUI/ingame.visible()
-	$Gameplay/GUI/pause.hide() 
-	$Gameplay/GUI/gameover.hide() 
+	$GUI/title.visible = false
+	$GUI/ingame.visible = true
+	$GUI/pause.visible = false
+	$GUI/gameover.visible = false
+	$GUI/commonButtons.visible = false
 	pass 
 
 func enter_pause_state():
 	print("Entered Pause State")
-	$Gameplay/GUI/title.hide() 
-	$Gameplay/GUI/ingame.visible()
-	$Gameplay/GUI/pause.visible()
-	$Gameplay/GUI/gameover.hide() 
+	$GUI/title.visible = false 
+	$GUI/ingame.visible = true
+	$GUI/pause.visible = true
+	$GUI/gameover.visible = false
+	$GUI/commonButtons.visible = true
 	pass 
 
 func enter_gameover_state():
 	print("Entered Game Over State")
-	$Gameplay/GUI/title.hide() 
-	$Gameplay/GUI/ingame.hide() 
-	$Gameplay/GUI/pause.hide() 
-	$Gameplay/GUI/gameover.visible()
+	$GUI/title.visible = false
+	$GUI/ingame.visible = false
+	$GUI/pause.visible = false
+	$GUI/gameover.visible = true
+	$GUI/commonButtons.visible = true
 	pass 
 
 func _process(delta):
