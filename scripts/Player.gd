@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Player
 
+signal isDead
+
 onready var gameplay := $".."
 var plBullet := preload("res://prefabs/Bullet.tscn")
 
@@ -53,6 +55,7 @@ func damage(amount: int):
 	print("Player Life = %s" % life)
 	
 	if life <= 0:
-		print("PLAYER DIED")
-		gameplay.set_state("GAMEOVER")
+		#print("PLAYER DIED")
+		#gameplay.set_state("GAMEOVER")
+		emit_signal("isDead")
 		queue_free()

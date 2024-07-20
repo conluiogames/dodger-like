@@ -21,7 +21,7 @@ func _on_SpawnTimer_timeout():
 	var viewRect := get_viewport_rect()
 	var xPos := rand_range(viewRect.position.x, viewRect.end.x)
 	
-	print(randf())
+	#print(randf())
 	
 	if randf() > 0.1:
 		var meteorPreload = preloadedMeteor[randi() % preloadedMeteor.size()]

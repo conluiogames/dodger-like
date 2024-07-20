@@ -1,68 +1,48 @@
 extends Node2D
 
-var titleObj
 enum GameState { TITLE, INGAME, PAUSE, GAMEOVER }
-var state = GameState.TITLE
+var current_state = GameState.TITLE
+var titleObj
+var gui_node
+var variables
+signal atualiza_gui
 
 var score : int = 00000
 var scoreRecord : int = 00000
 
 func _ready():
 	set_state(GameState.TITLE)
-	print("Máquina atual: " + str(state))
+	
+	print("Máquina atual: " + str(current_state))
+	var gui_node = $GUI
+	if gui_node != null:
+		print("O nó se chama " + gui_node.name)
+		print("O seu caminho é " + gui_node.get_path())
+		print("Quantidade de filhos: " + str(gui_node.get_child_count()))
+		if gui_node.get_script() != null:
+			print("Há scripts anexados neste nó")
+			print("Nome dos scripts: " + str(gui_node.get_script().resource_path))
 	pass 
+
+func _input(event):
+	if event is InputEventKey and event.pressed and event.scancode == KEY_K:
+		emit_signal("atualiza_gui")
+
 
 func set_state(new_state):
-	print("Estado tentará mudar para " + str(new_state))
-	match new_state:
-		GameState.TITLE:
-			enter_title_state()
-		GameState.INGAME:
-			enter_ingame_state()
-		GameState.PAUSE:
-			enter_pause_state()
-		GameState.GAMEOVER:
-			enter_gameover_state()
-	print("Máquina atual: " + str(state))
+	current_state = new_state 
+	#executa o método relativo a cada estado
+#	match current_state:
+#		GameState.TITLE:
+#			enter_title_state()
+#		GameState.INGAME:
+#			enter_ingame_state()
+#		GameState.PAUSE:
+#			enter_pause_state()
+#		GameState.GAMEOVER:
+#			enter_gameover_state()
 	pass
 
-
-func enter_title_state():
-	print("Entered Title State")
-	$GUI.visible = true
-	$GUI/title.visible = true
-	$GUI/ingame.visible = false
-	$GUI/pause.visible = false
-	$GUI/gameover.visible = false
-	$GUI/commonButtons.visible = false
-	pass
-
-func enter_ingame_state():
-	print("Entered In-Game State")
-	$GUI/title.visible = false
-	$GUI/ingame.visible = true
-	$GUI/pause.visible = false
-	$GUI/gameover.visible = false
-	$GUI/commonButtons.visible = false
-	pass 
-
-func enter_pause_state():
-	print("Entered Pause State")
-	$GUI/title.visible = false 
-	$GUI/ingame.visible = true
-	$GUI/pause.visible = true
-	$GUI/gameover.visible = false
-	$GUI/commonButtons.visible = true
-	pass 
-
-func enter_gameover_state():
-	print("Entered Game Over State")
-	$GUI/title.visible = false
-	$GUI/ingame.visible = false
-	$GUI/pause.visible = false
-	$GUI/gameover.visible = true
-	$GUI/commonButtons.visible = true
-	pass 
 
 func _compareScores():
 	if score > scoreRecord:	
@@ -94,7 +74,7 @@ func _on_bt_quit_pressed():
 	pass
 
 
-
-
-
-
+func _on_Player_isDead():
+	print("Jogador morreu")
+	current_state = GameState.GAMEOVER
+	pass

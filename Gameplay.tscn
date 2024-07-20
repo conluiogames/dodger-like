@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/Purple_Nebula_03-512x512.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/Spawner.gd" type="Script" id=5]
 [ext_resource path="res://fonts/dogica.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/Gameplay.gd" type="Script" id=7]
+[ext_resource path="res://scripts/GuiControls.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 outline_color = Color( 1, 1, 1, 0.564706 )
@@ -51,6 +52,7 @@ script = ExtResource( 5 )
 [node name="GUI" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 8 )
 
 [node name="title" type="Control" parent="GUI"]
 margin_right = 199.0
@@ -242,6 +244,8 @@ rect_scale = Vector2( 0.6, 0.72 )
 custom_fonts/font = SubResource( 1 )
 text = "Sair"
 
+[connection signal="atualiza_gui" from="." to="GUI" method="atualizaGUI"]
+[connection signal="isDead" from="Player" to="." method="_on_Player_isDead"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
 [connection signal="pressed" from="GUI/title/bt_start" to="." method="_on_bt_start_pressed"]
 [connection signal="pressed" from="GUI/pause/bt_resume" to="." method="_on_bt_resume_pressed"]
