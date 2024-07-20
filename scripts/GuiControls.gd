@@ -6,7 +6,7 @@ func _ready():
 	pass
 
 func atualizaGUI():
-	print("Estado atual: " + str(gameplay.current_state))
+	#print("Estado atual: " + str(gameplay.current_state))
 
 #	match gameplay.current_state:
 #		gameplay.GameState.TITLE:
@@ -23,19 +23,13 @@ func atualizaGUI():
 #			atualizaGUIGameover()
 			
 	if gameplay.current_state == gameplay.GameState.TITLE:
-		print("Atualizando GUI para TITLE")
 		atualizaGUITitle()
 	elif gameplay.current_state == gameplay.GameState.INGAME:
-		print("Atualizando GUI para INGAME")
 		atualizaGUIIngame()
 	elif gameplay.current_state == gameplay.GameState.PAUSE:
-		print("Atualizando GUI para PAUSE")
 		atualizaGUIPause()
 	elif gameplay.current_state == gameplay.GameState.GAMEOVER:
-		print("Atualizando GUI para GAMEOVER")
 		atualizaGUIGameover()
-	else:
-		print("Estado desconhecido: " + str(gameplay.current_state))
 	pass
 
 

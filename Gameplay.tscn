@@ -55,6 +55,7 @@ margin_bottom = 40.0
 script = ExtResource( 8 )
 
 [node name="title" type="Control" parent="GUI"]
+visible = false
 margin_right = 199.0
 margin_bottom = 299.0
 
@@ -118,7 +119,6 @@ align = 1
 valign = 1
 
 [node name="pause" type="Control" parent="GUI"]
-visible = false
 margin_right = 199.0
 margin_bottom = 301.0
 
@@ -219,6 +219,7 @@ align = 1
 valign = 1
 
 [node name="commonButtons" type="Control" parent="GUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -246,6 +247,7 @@ text = "Sair"
 
 [connection signal="atualiza_gui" from="." to="GUI" method="atualizaGUI"]
 [connection signal="isDead" from="Player" to="." method="_on_Player_isDead"]
+[connection signal="add_score" from="Area2D" to="." method="change_score"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
 [connection signal="pressed" from="GUI/title/bt_start" to="." method="_on_bt_start_pressed"]
 [connection signal="pressed" from="GUI/pause/bt_resume" to="." method="_on_bt_resume_pressed"]

@@ -10,8 +10,11 @@ export var maxRotationRate: float = 20
 export var life: int = 20
 
 var speed: float = 0
+var scorePoints : int
 var rotationRate: float = 0
 var playerInArea: Player = null
+
+signal add_score
 
 func _ready():
 	speed = rand_range(minSpeed, maxSpeed)
@@ -29,6 +32,7 @@ func _physics_process(delta):
 func damage(amount: int):
 	life -= amount
 	if life <= 0:
+		emit_signal("add_score")	#Tem que transferir scorePoints...
 		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
