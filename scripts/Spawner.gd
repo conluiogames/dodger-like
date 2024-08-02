@@ -14,6 +14,8 @@ var nextSpawnTime := 2.0
 
 func _ready():
 	randomize()
+	
+func initiateSpawn():
 	spawnTimer.start(nextSpawnTime)
 	
 func _on_SpawnTimer_timeout():
@@ -34,3 +36,7 @@ func _on_SpawnTimer_timeout():
 	if nextSpawnTime < MIN_SPAWN_TIME:
 		nextSpawnTime = MIN_SPAWN_TIME
 	spawnTimer.start(nextSpawnTime)
+	
+func distroyAllBodies():
+	#destroi todos os meteoros
+	pass

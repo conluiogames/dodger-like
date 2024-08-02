@@ -3,6 +3,7 @@ extends Control
 onready var gameplay := $".."
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	pass
 
 func atualizaGUI():

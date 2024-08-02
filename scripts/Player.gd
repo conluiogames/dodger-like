@@ -16,12 +16,9 @@ export var life: int = 3
 var vel := Vector2(0, 0)
 
 func _ready():
-	print(gameplay)
 	pass
 
-
 func _process(delta):
-	
 	# Tiro
 	if Input.is_action_pressed("shoot") and fireDelayTimer.is_stopped():
 		fireDelayTimer.start(fireDelay)

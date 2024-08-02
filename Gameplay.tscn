@@ -41,7 +41,7 @@ position = Vector2( 100, 228 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 56, 39 )
+position = Vector2( 45, 336 )
 
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2( 105, -27 )
@@ -55,7 +55,6 @@ margin_bottom = 40.0
 script = ExtResource( 8 )
 
 [node name="title" type="Control" parent="GUI"]
-visible = false
 margin_right = 199.0
 margin_bottom = 299.0
 
@@ -119,6 +118,7 @@ align = 1
 valign = 1
 
 [node name="pause" type="Control" parent="GUI"]
+visible = false
 margin_right = 199.0
 margin_bottom = 301.0
 
@@ -246,6 +246,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Sair"
 
 [connection signal="atualiza_gui" from="." to="GUI" method="atualizaGUI"]
+[connection signal="initiate_spawn" from="." to="Spawner" method="initiateSpawn"]
 [connection signal="isDead" from="Player" to="." method="_on_Player_isDead"]
 [connection signal="add_score" from="Area2D" to="." method="change_score"]
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]

@@ -8,6 +8,7 @@ var gui_node
 var variables
 
 signal atualiza_gui
+signal initiate_spawn
 
 var score : int = 00000
 var scoreRecord : int = 00000
@@ -46,6 +47,10 @@ func start_game():
 	print("start_game")
 	reset_score()
 	set_state(GameState.INGAME)
+	emit_signal("initiate_spawn")
+	# resetar o spaw dos corpos
+	# recriar o player na posição inicial
+	# se estiver em pausa, retirar
 	pass
 
 func pause_game():
@@ -72,7 +77,7 @@ func quit_game():
 
 # BOTÕES
 func _on_bt_start_pressed():
-	set_state("INGAME")
+	start_game()
 	pass 
 	
 func _on_bt_resume_pressed():
@@ -93,8 +98,6 @@ func _on_Player_isDead():
 	set_state(GameState.GAMEOVER)
 	emit_signal("atualiza_gui")
 	pass
-
-
 
 #SCORE
 func _compareScores(): 
