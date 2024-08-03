@@ -1,8 +1,14 @@
 extends Node2D
 
 enum GameState { TITLE, INGAME, PAUSE, GAMEOVER }
-
 var current_state = GameState.TITLE
+
+var player_prefab = load("res://prefabs/Player.tscn")
+#var existing_player =  get_tree().get_nodes_in_group("Player")
+
+var spawner_prefab = load("res://prefabs/Spawner.tscn")
+#var existing_spawner = get_tree().get_nodes_in_group("Spawner")
+
 var titleObj
 var gui_node
 var variables
@@ -44,13 +50,55 @@ func _input(event):
 	
 # ESTADOS
 func start_game():
+	
+	if get_tree().paused:
+		get_tree().paused = false
+	
 	print("start_game")
 	reset_score()
 	set_state(GameState.INGAME)
-	emit_signal("initiate_spawn")
-	# resetar o spaw dos corpos
-	# recriar o player na posição inicial
+	
+#PLAYER
+
+	#DELETA INSTANCIA VELHA
+	var player_count = 0
+	for child in get_children():
+		if child.name.to_lower().find("player") != -1:
+			player_count += 1
+			child.queue_free()
+
+	#INSTANCIA NOVA
+	var player_instance = player_prefab.instance()
+	player_instance.name = "Player"
+	player_instance.add_to_group("player")
+	player_instance.position = Vector2(100, 228)
+	self.add_child(player_instance)
+
+#SPAWNER
+
+	#DELETA INSTANCIA VELHA
+	var spawner_count = 0
+	for child in get_children():
+		if child.name.to_lower().find("spawner") != -1:
+			spawner_count += 1
+			child.queue_free()
+			
+		
+	#INSTANCIA NOVA
+	var spawner_instance = spawner_prefab.instance()
+	spawner_instance.name = "Spawner"
+	spawner_instance.add_to_group("spawner")
+	spawner_instance.position = Vector2(105, -27)
+	self.add_child(spawner_instance)
+	
+	#recomeçar música (instanciando?)
 	# se estiver em pausa, retirar
+	
+	#DELETAR TODOS OS CORPOS
+	var bodies_node = get_node("Bodies")
+	for child in bodies_node.get_children():
+		child.queue_free()
+	
 	pass
 
 func pause_game():
@@ -65,46 +113,42 @@ func resume_game():
 	set_state(GameState.INGAME)
 	pass
 	
+func end_game():
+	print("end_game")
+	set_state(GameState.GAMEOVER)
+	emit_signal("atualiza_gui")
+	pass
+		
 func title_game():
 	print("title_game")
 	set_state(GameState.TITLE)
+	#redundante, não volta pra esses estado...
 	pass
 
 func quit_game():
 	get_tree().quit()
-	pass
-
 
 # BOTÕES
 func _on_bt_start_pressed():
 	start_game()
-	pass 
 	
 func _on_bt_resume_pressed():
 	resume_game()
-	pass
 
 func _on_bt_restart_pressed():
 	start_game()
-	pass
 
 func _on_bt_quit_pressed():
 	quit_game()
-	pass
-
 
 func _on_Player_isDead():
-	print("Jogador morreu")
-	set_state(GameState.GAMEOVER)
-	emit_signal("atualiza_gui")
-	pass
+	end_game()
 
 #SCORE
 func _compareScores(): 
 	if score > scoreRecord:	
 		scoreRecord = score
 		update_score_UI()
-	pass 
 	
 func change_score():
 	var value = 10 #remover após resolver questão do var scorePoints em Meteor.gd
@@ -112,15 +156,12 @@ func change_score():
 	print("change score ativado. Valor: " + str(score))
 	#emit_signal("atualiza_gui")
 	update_score_UI()
-	pass
 	
 func reset_score():
 	score = 00000
 	#emit_signal("atualiza_gui")
 	update_score_UI()
-	pass
 	
 func update_score_UI():
 	var value : String  = str(score)
 	$GUI/ingame/score.text = value
-	pass

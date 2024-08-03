@@ -14,8 +14,6 @@ var nextSpawnTime := 2.0
 
 func _ready():
 	randomize()
-	
-func initiateSpawn():
 	spawnTimer.start(nextSpawnTime)
 	
 func _on_SpawnTimer_timeout():
@@ -28,6 +26,8 @@ func _on_SpawnTimer_timeout():
 	if randf() > 0.1:
 		var meteorPreload = preloadedMeteor[randi() % preloadedMeteor.size()]
 		var meteor: Meteor = meteorPreload.instance()
+		var bodies_node = get_tree().current_scene.get_node("Bodies")
+		bodies_node.add_child(meteor)
 		meteor.position = Vector2(xPos, position.y)
 		get_tree().current_scene.add_child(meteor)
 	
