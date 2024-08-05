@@ -65,7 +65,7 @@ func start_game():
 	for child in get_children():
 		if child.name.to_lower().find("player") != -1:
 			player_count += 1
-			child.queue_free()
+			#child.queue_free()
 
 	#INSTANCIA NOVA
 	var player_instance = player_prefab.instance()
@@ -142,6 +142,7 @@ func _on_bt_quit_pressed():
 	quit_game()
 
 func _on_Player_isDead():
+	print("sinal de morte do player recebido")
 	end_game()
 
 #SCORE

@@ -54,11 +54,11 @@ func _physics_process(delta):
 
 
 func damage(amount: int):
-	life -= amount
-	print("Player Life = %s" % life)
+	if life >0:
+		life -= amount
+		print("Player Life = %s" % life)
 	
 	if life <= 0:
-		#print("PLAYER DIED")
-		#gameplay.set_state("GAMEOVER")
 		emit_signal("isDead")
+		yield(get_tree(), "idle_frame") #sem isso, a destruição à seguir impede o sinal de chegar
 		queue_free()
