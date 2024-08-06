@@ -150,8 +150,8 @@ func _compareScores():
 		scoreRecord = score
 		update_score_UI()
 	
-func change_score():
-	var value = 10 #remover após resolver questão do var scorePoints em Meteor.gd
+func change_score(value):
+	#value = 10 #remover após resolver questão do var scorePoints em Meteor.gd
 	score = score + value
 	print("Pontuação recebida. Valor: " + str(score))
 	emit_signal("atualiza_gui")

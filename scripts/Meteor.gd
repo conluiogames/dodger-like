@@ -14,7 +14,7 @@ var scorePoints : int
 var rotationRate: float = 0
 var playerInArea: Player = null
 
-signal add_score
+signal add_score(value)
 
 func _ready():
 	speed = rand_range(minSpeed, maxSpeed)
@@ -32,7 +32,7 @@ func _physics_process(delta):
 func damage(amount: int):
 	life -= amount
 	if life <= 0:
-		emit_signal("add_score")	#Tem que transferir scorePoints...
+		emit_signal("add_score", scorePoints)	#Tem que transferir scorePoints...
 		#som de destruição
 		queue_free()
 

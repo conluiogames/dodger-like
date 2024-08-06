@@ -1,5 +1,5 @@
 extends Meteor
 
 func _ready():
-	life = 20
-	scorePoints = 50
+	life = 15
+	scorePoints = 15
