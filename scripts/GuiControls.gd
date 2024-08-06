@@ -4,7 +4,6 @@ onready var gameplay := $".."
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	pass
 
 func atualizaGUI():
 	#print("Estado atual: " + str(gameplay.current_state))
@@ -31,7 +30,6 @@ func atualizaGUI():
 		atualizaGUIPause()
 	elif gameplay.current_state == gameplay.GameState.GAMEOVER:
 		atualizaGUIGameover()
-	pass
 
 
 func atualizaGUITitle():
@@ -40,23 +38,20 @@ func atualizaGUITitle():
 	$pause.visible = false
 	$gameover.visible = false
 	$commonButtons.visible = false
-	pass
 
 func atualizaGUIIngame():
 	$title.visible = false
 	$ingame.visible = true
 	$pause.visible = false
 	$gameover.visible = false
-	$commonButtons.visible = false
-	pass 
+	$commonButtons.visible = false 
 
 func atualizaGUIPause():
 	$title.visible = false 
 	$ingame.visible = true
 	$pause.visible = true
 	$gameover.visible = false
-	$commonButtons.visible = true
-	pass 
+	$commonButtons.visible = true 
 
 func atualizaGUIGameover():
 	print("Atualizada tela do GameOver")
@@ -65,4 +60,3 @@ func atualizaGUIGameover():
 	$pause.visible = false
 	$gameover.visible = true
 	$commonButtons.visible = true
-	pass

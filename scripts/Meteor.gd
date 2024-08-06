@@ -33,6 +33,7 @@ func damage(amount: int):
 	life -= amount
 	if life <= 0:
 		emit_signal("add_score")	#Tem que transferir scorePoints...
+		#som de destruição
 		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():

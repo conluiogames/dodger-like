@@ -30,7 +30,6 @@ func _ready():
 #		if gui_node.get_script() != null:
 #			print("Há scripts anexados neste nó")
 #			print("Nome dos scripts: " + str(gui_node.get_script().resource_path))
-	pass 
 
 func set_state(new_state):
 	current_state = new_state
@@ -88,7 +87,7 @@ func start_game():
 	var spawner_instance = spawner_prefab.instance()
 	spawner_instance.name = "Spawner"
 	spawner_instance.add_to_group("spawner")
-	spawner_instance.position = Vector2(105, -27)
+	spawner_instance.position = Vector2(105, -17)
 	self.add_child(spawner_instance)
 	
 	#recomeçar música (instanciando?)
@@ -154,13 +153,13 @@ func _compareScores():
 func change_score():
 	var value = 10 #remover após resolver questão do var scorePoints em Meteor.gd
 	score = score + value
-	print("change score ativado. Valor: " + str(score))
-	#emit_signal("atualiza_gui")
+	print("Pontuação recebida. Valor: " + str(score))
+	emit_signal("atualiza_gui")
 	update_score_UI()
 	
 func reset_score():
 	score = 00000
-	#emit_signal("atualiza_gui")
+	emit_signal("atualiza_gui")
 	update_score_UI()
 	
 func update_score_UI():
