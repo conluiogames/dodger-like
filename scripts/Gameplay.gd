@@ -70,6 +70,7 @@ func start_game():
 	var player_instance = player_prefab.instance()
 	player_instance.name = "Player"
 	player_instance.add_to_group("player")
+	player_instance.connect("isDead", self, "_on_Player_isDead")
 	player_instance.position = Vector2(100, 228)
 	self.add_child(player_instance)
 
