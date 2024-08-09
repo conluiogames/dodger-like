@@ -1,9 +1,10 @@
-extends Area2D
+extends Node2D
 
 export var speed: float = 500
+var velocity = Vector2()
 
 func _physics_process(delta):
-	position.y -= speed * delta
+	position += velocity * delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

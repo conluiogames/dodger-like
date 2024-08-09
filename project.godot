@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://scripts/Enemy.gd"
+}, {
+"base": "Area2D",
 "class": "Meteor",
 "language": "GDScript",
 "path": "res://scripts/Meteor.gd"
@@ -18,10 +23,17 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
+}, {
+"base": "Area2D",
+"class": "PowerUP",
+"language": "GDScript",
+"path": "res://scripts/Powerup.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "Meteor": "",
-"Player": ""
+"Player": "",
+"PowerUP": ""
 }
 
 [application]
@@ -30,6 +42,12 @@ config/name="Dodge-like"
 run/main_scene="res://Gameplay.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
+
+[autoload]
+
+Utils="*res://scripts/Utils.gd"
+audio_player="*res://scripts/AudioPlayer.gd"
+LoaderSamples="*res://scripts/LoaderSamples.gd"
 
 [display]
 
@@ -77,5 +95,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

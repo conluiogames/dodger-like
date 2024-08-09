@@ -5,7 +5,7 @@ class_name Player
 signal isDead
 
 onready var gameplay := $".."
-var plBullet := preload("res://prefabs/Bullet.tscn")
+var plBullet := preload("res://scenes/Bullet.tscn")
 var vel := Vector2(0, 0)
 var is_taking_damage: bool = false
 var blink_timer = null
@@ -20,14 +20,37 @@ export var friction: float = 200
 export var fireDelay: float = 0.3
 export var life: int = 3
 
+var is_double_shooting = false setget set_double_shooting
+
+
 func _process(delta):
 	# Tiro
 	if Input.is_action_pressed("shoot") and fireDelayTimer.is_stopped():
 		fireDelayTimer.start(fireDelay)
+		
 		for child in firingPositions.get_children():
-			var bullet := plBullet.instance()
-			bullet.global_position = child.global_position
-			get_tree().current_scene.add_child(bullet)
+			if not is_double_shooting:
+				var bullet := plBullet.instance()
+				bullet.global_position = child.global_position
+				bullet.velocity = Vector2(0, -200)  # Define a velocidade e direção da bala
+				get_tree().current_scene.add_child(bullet)
+			else:
+				# Tiro duplo
+				var bullet_left := plBullet.instance()
+				var bullet_right := plBullet.instance()
+				
+				bullet_left.global_position = child.global_position
+				bullet_right.global_position = child.global_position
+				
+				bullet_left.velocity = Vector2(-25, -200)  # Direção ligeiramente para a esquerda
+				bullet_right.velocity = Vector2(25, -200)  # Direção ligeiramente para a direita
+				
+				get_tree().current_scene.add_child(bullet_left)
+				get_tree().current_scene.add_child(bullet_right)
+
+
+
+				
 	
 func _physics_process(delta):
 	#Comandos de Movimentação
@@ -57,24 +80,37 @@ func _physics_process(delta):
 
 
 
-func damage(amount: int):
+func damage(amount: int) -> void:
+	if life <= 0 or is_taking_damage:
+		return
 	
-	if life >0 and is_taking_damage == false:
-		life -= amount
-		print("Player Life = %s" % life)
-		invincibility_frame()
+	life -= amount
+	print("Player Life = %s" % life)
+	invincibility_frame()
 	
 	if life <= 0:
 		emit_signal("isDead")
-		yield(get_tree(), "idle_frame") #sem isso, a destruição à seguir impede o sinal de chegar
 		queue_free()
 
-func invincibility_frame():
+
+
+func invincibility_frame() -> void:
 	is_taking_damage = true
 	blink_effect()
-	yield(get_tree().create_timer(1.0), "timeout")
+
+	var timer = get_tree().create_timer(1.0)
+	timer.connect("timeout", self, "_on_invincibility_frame_timeout")
+
+
+func _on_invincibility_frame_timeout() -> void:
+	if not is_instance_valid(self):
+		return
+
 	is_taking_damage = false
 	blink_effect()
+
+
+
 
 func blink_effect():
 # versão simples mas funciona:	
@@ -82,6 +118,15 @@ func blink_effect():
 		player_sprite.modulate = Color(1, 0, 0)
 	else:
 		player_sprite.modulate = Color(1, 1, 1)
+
+
+func set_double_shooting(new_value):
+	is_double_shooting = new_value
+	
+	if is_double_shooting:
+		yield(Utils.create_timer(5), "timeout")
+		is_double_shooting = false
+	pass
 
 
 #	var blink_duration = 0.1  # Duração de cada piscada em segundos
