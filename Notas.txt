@@ -15,26 +15,23 @@
 
 #### BUGS ####
 
-- ingame, start entra na pausa mas não sai (faltam seletores de botão nas setas)
-
-GUI
-- frase de "novo recorde"
-- Reposicionar botões da tela de pause
-
-VIDA
+ok - frase de "novo recorde"
+ok - Reposicionar botões da tela de pause 
 ok - Acumulando vidas - criar var de hplimit
 ok - Ganho ou perda não está chamando atualizaGUI
-- impedir spaw do item de cura caso a vida esteja no máximo
+ok - Inimigos e player abaixo da GUI
 
+
+- ingame, start entra na pausa mas não sai (por interferência do pause aplicado a toda tree)
+- Spawn dos tiros não está sendo destruído ao recomeçar partida
+- impedir spaw do item de cura caso a vida esteja no máximo
 - os tiros inimigos não está causando dano
 - meteoro pequeno não causa dano
 
 
 FAXINA NA CENA
-- Todo mundo (até o player) que é instanciado no inicio da partida está acima da GUI
 - aninhar spawners em seus respectivos grupos
 - deletar sons gerados após eles finalizarem
-
 - Tiro segurando botão está causando queda de performance?
 - power ups não estão dando pontos, era isso mesmo?
 
@@ -57,6 +54,8 @@ FAXINA NA CENA
 - Barra de tempo mostrando duraçãod o power-up (de tiro)
 - Lojinha estilo vampire survivors? (em que vc aloca e desaloca recursos baseados na pontuação já acumulada?)
 - Navegar entre os botões através das setas?
+
+ (faltam seletores de botão nas setas)
 
 #ideias para a lojinha
 - aumento de hp máximo (até 10)

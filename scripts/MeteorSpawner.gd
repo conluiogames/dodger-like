@@ -5,9 +5,9 @@ const MIN_SPAWN_TIME = 1.5
 var gameplay
 var nextSpawnTime := 3.0
 var preloadedMeteor := [
-	preload("res://scenes/SmallMeteor.tscn"),
-	preload("res://scenes/MidMeteor.tscn"),
-	preload("res://scenes/BigMeteor.tscn")
+	preload("res://scenes/MeteorSmall.tscn"),
+	preload("res://scenes/MeteorMid.tscn"),
+	preload("res://scenes/MeteorBig.tscn")
 ]
 
 onready var spawnTimer := $SpawnTimer

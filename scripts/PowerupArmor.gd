@@ -1,7 +1,6 @@
 extends PowerUP
 
 signal life_point_added 
-
 var player_instance : Node
 
 func _ready():
@@ -10,7 +9,7 @@ func _ready():
 		player_instance = players[0]  # Seleciona o primeiro nó no grupo "ship"
 		connect("life_point_added", player_instance, "restore_life")
 	else:
-		print("erro: powerup de cura sem alvo")
+		print("erro: power-up de cura não consegue se comunicar com player")
 	pass
 
 	connect("area_entered", self, "_on_area_entered")

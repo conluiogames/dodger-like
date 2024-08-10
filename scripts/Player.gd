@@ -101,8 +101,10 @@ func _physics_process(delta):
 func restore_life():
 	if life < life_limit:
 		life = life + 1
-	emit_signal("update_life_ui", life)
-	#gameplay.update_score_UI()
+		emit_signal("update_life_ui", life)
+	else:
+		gameplay.change_score(10)
+		print("parabens, vida já está cheia. Tome pontos!")
 	return
 
 func damage(amount: int) -> void:

@@ -173,7 +173,7 @@ func _compareScores():
 	else:
 		$GUI/gameover/record.text = str("Record: " + str(record))
 
-func change_score(value):
+func change_score(value : int):
 	score += value
 	#print("Pontuação recebida. Valor: " + str(score))
 	emit_signal("update_ui_screen")

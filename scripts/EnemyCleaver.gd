@@ -25,7 +25,6 @@ func _process(delta):
 
 func shoot():
 	while true:
-
 		if(is_instance_valid(self)):
 			var laser = scn_laser.instance()
 			laser.position = $cannon.global_position
