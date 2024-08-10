@@ -37,7 +37,7 @@ func _on_SpawnTimer_timeout():
 		var bodies_node = get_tree().current_scene.get_node("Bodies")
 		bodies_node.add_child(meteor)  # Adiciona meteor ao nó "Bodies"
 		meteor.position = Vector2(xPos, position.y)
-		meteor.connect("add_score", gameplay, "change_score")  # Teste de conexão entre sinal e receptor
+		meteor.connect("add_score", gameplay, "change_score")
 
 	
 	# Restart the timer

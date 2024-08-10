@@ -95,6 +95,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Press to Start"
 
 [node name="ingame" type="Control" parent="GUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -259,7 +260,8 @@ rect_scale = Vector2( 0.6, 0.72 )
 custom_fonts/font = SubResource( 1 )
 text = "Sair"
 
-[connection signal="atualiza_gui" from="." to="GUI" method="atualizaGUI"]
+[connection signal="update_score_ui" from="." to="GUI" method="update_score_ui"]
+[connection signal="update_ui_screen" from="." to="GUI" method="refresh_ui"]
 [connection signal="pressed" from="GUI/title/bt_start" to="." method="_on_bt_start_pressed"]
 [connection signal="pressed" from="GUI/pause/bt_resume" to="." method="_on_bt_resume_pressed"]
 [connection signal="pressed" from="GUI/commonButtons/bt_restart" to="." method="_on_bt_restart_pressed"]

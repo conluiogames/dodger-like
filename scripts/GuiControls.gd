@@ -5,58 +5,51 @@ onready var gameplay := $".."
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 
-func atualizaGUI():
-	#print("Estado atual: " + str(gameplay.current_state))
-
-#	match gameplay.current_state:
-#		gameplay.GameState.TITLE:
-#			print("Atualizando GUI para TITLE")
-#			atualizaGUITitle()
-#		gameplay.GameState.INGAME:
-#			print("Atualizando GUI para INGAME")
-#			atualizaGUIIngame()
-#		gameplay.GameState.PAUSE:
-#			print("Atualizando GUI para PAUSE")
-#			atualizaGUIPause()
-#		gameplay.GameState.GAMEOVER:
-#			print("Atualizando GUI para GAMEOVER")
-#			atualizaGUIGameover()
-			
+#nome antigo: atualizaGUI()
+func refresh_ui():
+	#print("Estado atual: " + str(gameplay.current_state))	
 	if gameplay.current_state == gameplay.GameState.TITLE:
-		atualizaGUITitle()
+		toggle_title_sreen()
 	elif gameplay.current_state == gameplay.GameState.INGAME:
-		atualizaGUIIngame()
+		toggle_ingame_sreen()
 	elif gameplay.current_state == gameplay.GameState.PAUSE:
-		atualizaGUIPause()
+		toggle_pause_screen()
 	elif gameplay.current_state == gameplay.GameState.GAMEOVER:
-		atualizaGUIGameover()
+		toggle_gameover_scren()
 
-
-func atualizaGUITitle():
+#antigos nomes: atualizaGUITitle, atualizaGUIIngame, atualizaGUIPause, atualizaGUIGameover
+func toggle_title_sreen():
 	$title.visible = true
 	$ingame.visible = false
 	$pause.visible = false
 	$gameover.visible = false
 	$commonButtons.visible = false
 
-func atualizaGUIIngame():
+func toggle_ingame_sreen():
 	$title.visible = false
 	$ingame.visible = true
 	$pause.visible = false
 	$gameover.visible = false
 	$commonButtons.visible = false 
 
-func atualizaGUIPause():
+func toggle_pause_screen():
 	$title.visible = false 
 	$ingame.visible = true
 	$pause.visible = true
 	$gameover.visible = false
-	$commonButtons.visible = true 
+	$commonButtons.visible = true
 
-func atualizaGUIGameover():
-	print("Atualizada tela do GameOver")
+func toggle_gameover_scren():
 	$title.visible = false
 	$ingame.visible = false
 	$pause.visible = false
 	$gameover.visible = true
 	$commonButtons.visible = true
+
+func update_score_ui(score_value):
+	$ingame/score.text = "" + str(score_value)
+	$ingame/score.update()
+
+func update_life_ui(live_value):
+	$ingame/lives.text = "" + str(live_value)
+	$ingame/lives.update()

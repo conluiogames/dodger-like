@@ -13,8 +13,9 @@ var titleObj
 var gui_node
 var variables
 
-signal atualiza_gui
+signal update_ui_screen
 signal initiate_spawn
+signal update_score_ui
 
 var score : int = 00000
 var record : int = 00000
@@ -25,13 +26,14 @@ var player_ref = null
 func _ready():
 	set_state(GameState.TITLE)
 	gui_node = $GUI
-	connect("atualiza_gui", self, "update_score_UI")
+	connect("update_ui_screen", self, "update_score_UI")
 
 func set_state(new_state):
 	current_state = new_state
-	emit_signal("atualiza_gui")
+	emit_signal("update_ui_screen")
 	pass
 
+#===================== CONTROLADORES =============================
 func _input(event):
 	if event is InputEventKey and event.pressed and (event.scancode == KEY_ENTER or event.scancode == KEY_ESCAPE):
 		if current_state == GameState.TITLE:
@@ -42,16 +44,16 @@ func _input(event):
 			resume_game()
 	pass
 
+
+#===================== MÁQUINA DE ESTADOS  =============================
+#===================== START GAME
 func start_game():
 	if get_tree().paused:
 		get_tree().paused = false
 	
-	print("start_game")
+	#print("start_game")
 	reset_score()
 	set_state(GameState.INGAME)
-
-	#===================== PLAYER =============================
-
 	# Apaga instâncias antigas
 	for child in get_children():
 		if child.name.to_lower().find("player") != -1:
@@ -67,14 +69,12 @@ func start_game():
 	# Atualiza a referência ao player
 	player_ref = new_player
 
-	#===================== PLAYER =============================
-
 	# Instancia os outros spawners
 	instantiate_spawner(meteor_spawner, "meteor_spawner", Vector2(105, -17))
 	instantiate_spawner(enemy_spawner, "enemy_spawner", Vector2(105, -17))
 	instantiate_spawner(powerup_spawner, "powerup_spawner", Vector2(105, -17))
 
-	# Deleta todos os corpos no nó "Bodies"
+	# Deleta todos os corpos do nó "Bodies"
 	var bodies_node = get_node("Bodies")
 	for child in bodies_node.get_children():
 		child.queue_free()
@@ -91,31 +91,39 @@ func instantiate_spawner(spawner, name, position):
 	new_spawner.position = position
 	self.add_child(new_spawner)
 
+#===================== PAUSE GAME
 func pause_game():
-	print("pause_game")
+	#print("pause_game")
 	set_state(GameState.PAUSE)
 	get_tree().paused = true
 
+#===================== RESUME GAME
 func resume_game():
 	get_tree().paused = false
-	print("unpause_game")
+	#print("unpause_game")
 	set_state(GameState.INGAME)
 
+#===================== END GAME
 func end_game():
-	print("End game iniciado.")
+	#print("End game iniciado.")
 	_compareScores()
-	emit_signal("atualiza_gui")
+	emit_signal("update_ui_screen")
 	set_state(GameState.GAMEOVER)
-	update_score_UI()
-	print("Pontuação final no GameOver: %s" % score)
+	emit_signal("update_score_ui", score)
+	
+	#print("Pontuação final no GameOver: %s" % score)
 
+#===================== TITLE GAME
 func title_game():
-	print("title_game")
+	#print("title_game")
 	set_state(GameState.TITLE)
 
+#===================== QUIT GAME
 func quit_game():
 	get_tree().quit()
 
+
+#===================== BOTÕES DOS MENUS  =============================
 # BOTÕES
 func _on_bt_start_pressed():
 	start_game()
@@ -130,40 +138,28 @@ func _on_bt_quit_pressed():
 	quit_game()
 
 func _on_Player_isDead():
-	print("sinal de morte do player recebido")
+	#print("sinal de morte do player recebido")
 	player_ref = null  # Redefine player_ref como null
 	end_game()
 
-# SCORE
+#===================== GERENCIAMENTO DE PONTUAÇÃO  =============================
 func _compareScores():
 	if score > record:	
 		record = score
 		$GUI/gameover/currentScore.text = str("Placar atual: " + str(score))
 		$GUI/gameover/currentScore.update()
-		$GUI/gameover/record.text = str("Record: " + str(record))
+		#$GUI/gameover/record.text = str("Record: " + str(record))
+		$GUI/gameover/record.text = str("Novo Record!")
 		$GUI/gameover/record.update()
-		update_score_UI()
+		emit_signal("update_score_ui", score)
 
 func change_score(value):
 	score += value
-	print("Pontuação recebida. Valor: " + str(score))
-	emit_signal("atualiza_gui")
-	update_score_UI()
+	#print("Pontuação recebida. Valor: " + str(score))
+	emit_signal("update_ui_screen")
+	emit_signal("update_score_ui", score)
 	
 func reset_score():
 	score = 00000
-	emit_signal("atualiza_gui")
-	update_score_UI()
-	
-func update_score_UI():
-	var value : String = str(score)
-	if player_ref != null:
-		var playerLife : String = str(player_ref.life)
-		$GUI/ingame/lives.text = playerLife
-		$GUI/ingame/lives.update()  # Atualiza a vida do player
-	else:
-		print("player_ref é null, não é possível atualizar a vida do jogador.")
-	$GUI/ingame/score.text = value
-	$GUI/ingame/score.update()  # Força a atualização da interface
-	print("UI atualizada com pontuação: %s" % value)
-
+	emit_signal("update_ui_screen")
+	emit_signal("update_score_ui", score)

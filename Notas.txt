@@ -1,0 +1,75 @@
+#### GAMEPLAY ###
+- Destruir corpo após colisão com o player [teste]
+- Demorar um pouco mais para começar a aparecer os "corredores"
+- Melhorar atrito do movimento. Mas como exatamente?
+- Inimigos spawnando um dentro do outro e atirando cronometrado (isso é bom?)
+
+
+#### HISTÓRIA? ####
+- Faria mais sentido se os power ups fossem drops dos inimigos e meteoros
+- Herói é inspirado em brucutus 80s mas tem rosto de insectóide (a vendedora da loja no mesmo estilo)
+- Dividir os grupos invocados em ondas tornaria bem menos repetitivo e daria mais sensação de progressão
+	- zona de cinturão
+	- posto avançado (zona inimiga)
+	- zona do caos
+
+#### BUGS ####
+
+- ingame, start entra na pausa mas não sai (faltam seletores de botão nas setas)
+
+GUI
+- frase de "novo recorde"
+- Reposicionar botões da tela de pause
+
+VIDA
+ok - Acumulando vidas - criar var de hplimit
+ok - Ganho ou perda não está chamando atualizaGUI
+- impedir spaw do item de cura caso a vida esteja no máximo
+
+- os tiros inimigos não está causando dano
+- meteoro pequeno não causa dano
+
+
+FAXINA NA CENA
+- Todo mundo (até o player) que é instanciado no inicio da partida está acima da GUI
+- aninhar spawners em seus respectivos grupos
+- deletar sons gerados após eles finalizarem
+
+- Tiro segurando botão está causando queda de performance?
+- power ups não estão dando pontos, era isso mesmo?
+
+
+
+#### ARTE ####
+
+- Mudar cor dos projéteis dos inimigos em relação ao player
+- Colocar logo da conluio, nossos nomes e o ano no título
+- Aprimorar contador de vida
+- Escolher fontes definitivas (e aprender a redimensionar sem perda de resolução)
+- Paisagem variável (nebulosas, satélites perdidos, planetas, etc)
+- Matiz de céu variando entre uns 3 ou 4 tipos (posteriormente associado a cada zona)
+- Escolhe título...
+- Arte do logo
+- Som mais agradável para tiro
+
+
+#### NOVAS IDEIAS??? ####
+- Barra de tempo mostrando duraçãod o power-up (de tiro)
+- Lojinha estilo vampire survivors? (em que vc aloca e desaloca recursos baseados na pontuação já acumulada?)
+- Navegar entre os botões através das setas?
+
+#ideias para a lojinha
+- aumento de hp máximo (até 10)
+- diminuição do atrito
+- intervalo do tiro
+- aumento de buff máximo do tiro
+- blindagem - chance de ser poupado por dano de colisão (exceto tiro)
+- ricochete - chance de "devolver" tiro recebido (projetil do tiro se desloca para alvo próximo e atravessa meteoros)
+
+
+#### TAREFAS ####
+
+- Fazer um relatório com todas as decisões e alterações que fiz no projeto
+- Pergunta pro Rancho se ele já compôs pra jogos ou se sabe dar dicas de como fazer música dinâmica
+
+

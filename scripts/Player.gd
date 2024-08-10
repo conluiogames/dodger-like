@@ -3,6 +3,7 @@ extends Area2D
 class_name Player
 
 signal isDead
+signal update_life_ui(life)
 
 onready var gameplay := $".."
 var plBullet := preload("res://scenes/Bullet.tscn")
@@ -18,10 +19,29 @@ export var speed: float = 100
 export var acceleration: float = 400
 export var friction: float = 200
 export var fireDelay: float = 0.3
-export var life: int = 3
+export var life_limit: int = 3
+export var life: int = life_limit
 
+var gui
 var is_double_shooting = false setget set_double_shooting
 
+
+#var players = get_tree().get_nodes_in_group("ship")
+#	if players.size() > 0:
+#		player_instance = players[0]  # Seleciona o primeiro nó no grupo "ship"
+#		connect("life_point_added", player_instance, "restore_life")
+#	else:
+#		print("erro: powerup de cura sem alvo")
+#	pass
+
+
+func _ready():
+	yield(get_tree(), "idle_frame") 
+	gui = get_node("/root/Gameplay/GUI")
+	print("Player entende isso como GUI :" + str(gui))
+	connect("update_life_ui", gui, "update_life_ui")
+	emit_signal("update_life_ui", life)
+	return
 
 func _process(delta):
 	# Tiro
@@ -78,7 +98,12 @@ func _physics_process(delta):
 	position.x = clamp(position.x, 0, viewRect.size.x)
 	position.y = clamp(position.y, 0, viewRect.size.y)
 
-
+func restore_life():
+	if life < life_limit:
+		life = life + 1
+	emit_signal("update_life_ui", life)
+	#gameplay.update_score_UI()
+	return
 
 func damage(amount: int) -> void:
 	if life <= 0 or is_taking_damage:
@@ -91,8 +116,9 @@ func damage(amount: int) -> void:
 	if life <= 0:
 		emit_signal("isDead")
 		queue_free()
-
-
+	emit_signal("update_life_ui", life)
+	#gameplay.update_score_UI()
+	return
 
 func invincibility_frame() -> void:
 	is_taking_damage = true
@@ -109,8 +135,14 @@ func _on_invincibility_frame_timeout() -> void:
 	is_taking_damage = false
 	blink_effect()
 
-
-
+func set_double_shooting(new_value):
+	is_double_shooting = new_value
+	
+	if is_double_shooting:
+		yield(Utils.create_timer(5), "timeout")
+		is_double_shooting = false
+	pass
+	
 
 func blink_effect():
 # versão simples mas funciona:	
@@ -119,14 +151,6 @@ func blink_effect():
 	else:
 		player_sprite.modulate = Color(1, 1, 1)
 
-
-func set_double_shooting(new_value):
-	is_double_shooting = new_value
-	
-	if is_double_shooting:
-		yield(Utils.create_timer(5), "timeout")
-		is_double_shooting = false
-	pass
 
 
 #	var blink_duration = 0.1  # Duração de cada piscada em segundos
