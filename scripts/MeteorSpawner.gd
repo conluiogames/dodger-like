@@ -35,7 +35,7 @@ func _on_SpawnTimer_timeout():
 		var meteorPreload = preloadedMeteor[randi() % preloadedMeteor.size()]
 		var meteor: Meteor = meteorPreload.instance()
 		var bodies_node = get_tree().current_scene.get_node("Bodies")
-		bodies_node.add_child(meteor)  # Adiciona meteor ao nó "Bodies"
+		bodies_node.add_child(meteor)
 		meteor.position = Vector2(xPos, position.y)
 		meteor.connect("add_score", gameplay, "change_score")
 

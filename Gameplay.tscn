@@ -42,6 +42,8 @@ scale_amount_random = 1.0
 
 [node name="Bodies" type="Node2D" parent="."]
 
+[node name="Projectiles" type="Node2D" parent="."]
+
 [node name="GUI" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

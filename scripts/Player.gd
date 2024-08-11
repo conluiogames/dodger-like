@@ -7,6 +7,7 @@ signal update_life_ui(life)
 
 onready var gameplay := $".."
 var plBullet := preload("res://scenes/Bullet.tscn")
+var projectiles_node
 var vel := Vector2(0, 0)
 var is_taking_damage: bool = false
 var blink_timer = null
@@ -35,10 +36,12 @@ var is_double_shooting = false setget set_double_shooting
 #	pass
 
 
+
 func _ready():
+	projectiles_node = get_tree().current_scene.get_node("Projectiles")
+	print("Player reconhece isso como Projectiles: " + str(projectiles_node))
 	yield(get_tree(), "idle_frame") 
 	gui = get_node("/root/Gameplay/GUI")
-	print("Player entende isso como GUI :" + str(gui))
 	connect("update_life_ui", gui, "update_life_ui")
 	emit_signal("update_life_ui", life)
 	return
@@ -53,7 +56,10 @@ func _process(delta):
 				var bullet := plBullet.instance()
 				bullet.global_position = child.global_position
 				bullet.velocity = Vector2(0, -200)  # Define a velocidade e direção da bala
+				projectiles_node.add_child(bullet)
 				get_tree().current_scene.add_child(bullet)
+				
+
 			else:
 				# Tiro duplo
 				var bullet_left := plBullet.instance()
@@ -62,13 +68,13 @@ func _process(delta):
 				bullet_left.global_position = child.global_position
 				bullet_right.global_position = child.global_position
 				
-				bullet_left.velocity = Vector2(-25, -200)  # Direção ligeiramente para a esquerda
-				bullet_right.velocity = Vector2(25, -200)  # Direção ligeiramente para a direita
+				bullet_left.velocity = Vector2(-25, -200) 
+				bullet_right.velocity = Vector2(25, -200) 
 				
+				projectiles_node.add_child(bullet_left)
+				projectiles_node.add_child(bullet_right)
 				get_tree().current_scene.add_child(bullet_left)
 				get_tree().current_scene.add_child(bullet_right)
-
-
 
 				
 	

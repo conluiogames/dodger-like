@@ -7,7 +7,7 @@ func _ready():
 
 func _on_area_entered(other):
 	if other.is_in_group("ship"):
-		other.damage(1)
+		other.damage(1) #não está funcioando....
 		create_flare()
 		Utils.remote_call("camera", "shake", 3, 0.13)
 		queue_free()
