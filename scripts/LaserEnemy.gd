@@ -1,6 +1,7 @@
 extends "res://scripts/Laser.gd"
 
 func _ready():
+	sound = $AudioStreamPlayer2D
 	connect("area_entered", self, "_on_area_entered")
 	audio_player.play("laser_enemy")
 	pass

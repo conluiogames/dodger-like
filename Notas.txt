@@ -22,6 +22,7 @@ ok - Ganho ou perda não está chamando atualizaGUI
 ok - Inimigos e player abaixo da GUI
 
 
+- Bullet (player), LaserEnemy e Explosion instanciados abaixo de GUI...
 - ingame, start entra na pausa mas não sai (por interferência do pause aplicado a toda tree)
 - Spawn dos tiros não está sendo destruído ao recomeçar partida
 - impedir spaw do item de cura caso a vida esteja no máximo
@@ -29,17 +30,16 @@ ok - Inimigos e player abaixo da GUI
 - meteoro pequeno não causa dano
 
 
+
 FAXINA NA CENA
 - aninhar spawners em seus respectivos grupos
 - deletar sons gerados após eles finalizarem
 - Tiro segurando botão está causando queda de performance?
-- power ups não estão dando pontos, era isso mesmo?
-
 
 
 #### ARTE ####
 
-- Mudar cor dos projéteis dos inimigos em relação ao player
+ok - Mudar cor dos projéteis dos inimigos em relação ao player
 - Colocar logo da conluio, nossos nomes e o ano no título
 - Aprimorar contador de vida
 - Escolher fontes definitivas (e aprender a redimensionar sem perda de resolução)
@@ -56,6 +56,12 @@ FAXINA NA CENA
 - Navegar entre os botões através das setas?
 
  (faltam seletores de botão nas setas)
+
+
+- inimigos não precisam atirar quando player tiver morto
+- inimigos podem acelerar voo para fora da tela
+- spawn dos inimigos pode parar
+
 
 #ideias para a lojinha
 - aumento de hp máximo (até 10)

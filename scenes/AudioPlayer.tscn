@@ -10,3 +10,5 @@ script = ExtResource( 1 )
 stream = ExtResource( 2 )
 volume_db = -18.159
 autoplay = true
+
+[node name="teste_teste" type="Node" parent="."]
