@@ -20,15 +20,12 @@ ok - Reposicionar botões da tela de pause
 ok - Acumulando vidas - criar var de hplimit
 ok - Ganho ou perda não está chamando atualizaGUI
 ok - Inimigos e player abaixo da GUI
-
+ok - os tiros inimigos não está causando dano
+ok - meteoro pequeno não causa dano
 
 - Bullet (player), LaserEnemy e Explosion instanciados abaixo de GUI...
 - ingame, start entra na pausa mas não sai (por interferência do pause aplicado a toda tree)
 - Spawn dos tiros não está sendo destruído ao recomeçar partida
-- impedir spaw do item de cura caso a vida esteja no máximo
-- os tiros inimigos não está causando dano
-- meteoro pequeno não causa dano
-
 
 
 FAXINA NA CENA
@@ -51,6 +48,7 @@ ok - Mudar cor dos projéteis dos inimigos em relação ao player
 
 
 #### NOVAS IDEIAS??? ####
+- Meteoro cumprido rotativo
 - Barra de tempo mostrando duraçãod o power-up (de tiro)
 - Lojinha estilo vampire survivors? (em que vc aloca e desaloca recursos baseados na pontuação já acumulada?)
 - Navegar entre os botões através das setas?
